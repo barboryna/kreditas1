@@ -97,11 +97,7 @@ public class Kredit {
                         System.out.println("");
                     }
 
-                    Total = MonthPmt * laikotarpis;
-                    System.out.println("   ");
-                    System.out.printf("Total amount to pay: %.2f", Total);
-                    System.out.println("   ");
-                    System.out.println("Good Bye");
+                    
                 }
                 break;
 
@@ -175,16 +171,16 @@ public class Kredit {
                         System.out.println("");
                     }
 
-                    Total = MonthPmt * laikotarpis;
-                    System.out.println("   ");
-                    System.out.printf("Total amount to pay: %.2f", Total);
-                    System.out.println("   ");
-                    System.out.println("Good Bye");
                 }
                 break;
             default:
                 throw new FileNotFoundException("Iterptas simbolius nezinomas(reikejo iveskite 1 arba 2)");
 
         }
+        Total = MonthPmt * laikotarpis;
+                    System.out.println("   ");
+                    System.out.printf("Total amount to pay: %.2f", Total);
+                    System.out.println("   ");
+                    System.out.println("Good Bye");
     }
 }
