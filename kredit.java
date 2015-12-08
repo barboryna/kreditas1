@@ -67,38 +67,37 @@ public class Kredit {
                 System.out.println("Jus ivedete " + laikotarpis);
                 if (laikotarpis > 960) {
                     throw new FileNotFoundException("Paskola tokiam ilgam laikotarpiui nesuteikiama");
-                } else {
-                    System.out.println("   ");
-                    if (Paskola >= 0.4 * Pajamos * (isiskolinimai - (vaikukiekis * vaikuislaidos))) {
-                        throw new FileNotFoundException("Paskola nesuteikiama!");
-                    } else if (Paskola < 0.4 * Pajamos * (isiskolinimai - (vaikukiekis * vaikuislaidos))) {
-                        System.out.println("Paskola suteikiama!");
-                    }
-
-                    if (0.0013 * Paskola > 144.81) {
-                        System.out.println("Kredito sutarties sudarymo mokestis bus: " + 0.0013 * Paskola);
-                    } else if (0.0013 * Paskola <= 144.81) {
-                        System.out.println("Kredito sutarties sudarymo mokestis bus: " + 144.81);
-                    }
-
-                    System.out.println("");
-                    R = palukanos / 1200;
-                    F = Math.pow(1 + R, laikotarpis);
-                    MonthPmt = Paskola * (R * F / (-1 + F));
-                    System.out.printf("Jusu menesinis mokestis bus: %.2f", MonthPmt);
-                    System.out.println("   ");
-
-                    Pelnas = Pajamos - MonthPmt - (vaikuislaidos * vaikukiekis) - isiskolinimai;
-                    System.out.printf("Seimos pajamos atskaicius mokescius:  %.2f", Pelnas);
-                    System.out.println("   ");
-                    if (Pelnas > 30000 || Pelnas < 0) {
-                        throw new FileNotFoundException("Paskola jums nebus suteikiama");
-                    } else {
-                        System.out.println("");
-                    }
-
-                    
                 }
+                System.out.println("   ");
+                if (Paskola >= 0.4 * Pajamos * (isiskolinimai - (vaikukiekis * vaikuislaidos))) {
+                    throw new FileNotFoundException("Paskola nesuteikiama!");
+                }
+                if (Paskola < 0.4 * Pajamos * (isiskolinimai - (vaikukiekis * vaikuislaidos))) {
+                       System.out.println("Paskola suteikiama!");
+                }
+
+                if (0.0013 * Paskola > 144.81) {
+                    System.out.println("Kredito sutarties sudarymo mokestis bus: " + 0.0013 * Paskola);
+                }
+                if (0.0013 * Paskola <= 144.81) {
+                    System.out.println("Kredito sutarties sudarymo mokestis bus: " + 144.81);
+                }
+                System.out.println("");
+                R = palukanos / 1200;
+                F = Math.pow(1 + R, laikotarpis);
+                MonthPmt = Paskola * (R * F / (-1 + F));
+                System.out.printf("Jusu menesinis mokestis bus: %.2f", MonthPmt);
+                System.out.println("   ");
+
+                Pelnas = Pajamos - MonthPmt - (vaikuislaidos * vaikukiekis) - isiskolinimai;
+                System.out.printf("Seimos pajamos atskaicius mokescius:  %.2f", Pelnas);
+                System.out.println("   ");
+                if (Pelnas > 30000 || Pelnas < 0) {
+                    throw new FileNotFoundException("Paskola jums nebus suteikiama");
+                }
+                
+                System.out.println("");
+                
                 break;
 
             case 2:
@@ -140,22 +139,24 @@ public class Kredit {
                 System.out.println("Jus ivedete " + laikotarpis);
                 if (laikotarpis > 60) {
                     throw new FileNotFoundException("Paskola tokiam ilgam laikotarpiui nesuteikiama");
-                } else {
-                    System.out.println("   ");
-                    if (Paskola >= 0.4 * Pajamos * (isiskolinimai - (vaikukiekis * vaikuislaidos))) {
-                        throw new FileNotFoundException("Paskola nesuteikiama!");
-                    } else if (Paskola < 0.4 * Pajamos * (isiskolinimai - (vaikukiekis * vaikuislaidos))) {
-                        System.out.println("Paskola suteikiama!");
-                    }
-                    System.out.println(" ");
+                }
+                
+                System.out.println("   ");
+                
+                if (Paskola >= 0.4 * Pajamos * (isiskolinimai - (vaikukiekis * vaikuislaidos))) {
+                    throw new FileNotFoundException("Paskola nesuteikiama!");
+                } else if (Paskola < 0.4 * Pajamos * (isiskolinimai - (vaikukiekis * vaikuislaidos))) {
+                    System.out.println("Paskola suteikiama!");
+                }
+                
+                System.out.println(" ");
 
-                    if (0.0013 * Paskola > 144.81) {
-                        System.out.println("Kredito sutarties sudarymo mokestis bus: " + 0.0013 * Paskola);
-                    } else if (0.0013 * Paskola <= 144.81) {
-                        System.out.println("Kredito sutarties sudarymo mokestis bus: " + 144.81);
-                    }
-
-                    System.out.println("");
+                if (0.0013 * Paskola > 144.81) {
+                    System.out.println("Kredito sutarties sudarymo mokestis bus: " + 0.0013 * Paskola);
+                }
+                if (0.0013 * Paskola <= 144.81) {
+                    System.out.println("Kredito sutarties sudarymo mokestis bus: " + 144.81);
+                     System.out.println("");
                     R = palukanos / 1200;
                     F = Math.pow(1 + R, laikotarpis);
                     MonthPmt = Paskola * (R * F / (-1 + F));
@@ -165,13 +166,13 @@ public class Kredit {
                     Pelnas = Pajamos - MonthPmt - (vaikuislaidos * vaikukiekis) - isiskolinimai;
                     System.out.printf("Seimos pajamos atskaicius mokescius:  %.2f", Pelnas);
                     System.out.println("   ");
-                    if (Pelnas > 10000 || Pelnas < 0) {
-                        throw new FileNotFoundException("Paskola jums nebus suteikiama");
-                    } else {
-                        System.out.println("");
-                    }
-
                 }
+                if (Pelnas > 10000 || Pelnas < 0) {
+                    throw new FileNotFoundException("Paskola jums nebus suteikiama");
+                }
+                
+                System.out.println(" ");
+                
                 break;
             default:
                 throw new FileNotFoundException("Iterptas simbolius nezinomas(reikejo iveskite 1 arba 2)");
