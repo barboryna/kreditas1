@@ -38,14 +38,14 @@ public class Kredit {
                 System.out.println("Seimos finansiniai isipareigojimai (isiskolinimai):");
                 isiskolinimai = klaviatura.nextDouble();
                 System.out.println("Palukanos bus: " + isiskolinimai);
-                if (isiskolinimai > 15000 || isiskolinimai < 0) {
+                if (galimasIsiskolinimas(0, 15000)) {
                     throw new FileNotFoundException("Paskola jums nebus suteikiama del palukanu");
                 }
 
                 System.out.println("Iveskite vaiku skaiciu: ");
                 vaikukiekis = klaviatura.nextInt();
                 System.out.println("Vaiku yra: " + vaikukiekis);
-                if (vaikukiekis > 10 || vaikukiekis < 0) {
+                if (galimasVakuKiekis(10)) {
                     throw new FileNotFoundException("Blogai ivedete vaiku skaiciu");
 
                 }
@@ -69,17 +69,17 @@ public class Kredit {
                     throw new FileNotFoundException("Paskola tokiam ilgam laikotarpiui nesuteikiama");
                 }
                 System.out.println("   ");
-                if (Paskola >= 0.4 * Pajamos * (isiskolinimai - (vaikukiekis * vaikuislaidos))) {
+                if (arSuteikiamaPaskola()) {
                     throw new FileNotFoundException("Paskola nesuteikiama!");
                 }
-                if (Paskola < 0.4 * Pajamos * (isiskolinimai - (vaikukiekis * vaikuislaidos))) {
+                else {
                        System.out.println("Paskola suteikiama!");
                 }
 
                 if (0.0013 * Paskola > 144.81) {
                     System.out.println("Kredito sutarties sudarymo mokestis bus: " + 0.0013 * Paskola);
                 }
-                if (0.0013 * Paskola <= 144.81) {
+                else
                     System.out.println("Kredito sutarties sudarymo mokestis bus: " + 144.81);
                 }
                 System.out.println("");
@@ -92,7 +92,7 @@ public class Kredit {
                 Pelnas = Pajamos - MonthPmt - (vaikuislaidos * vaikukiekis) - isiskolinimai;
                 System.out.printf("Seimos pajamos atskaicius mokescius:  %.2f", Pelnas);
                 System.out.println("   ");
-                if (Pelnas > 30000 || Pelnas < 0) {
+                if (galimasPelnas(0, 30000)) {
                     throw new FileNotFoundException("Paskola jums nebus suteikiama");
                 }
                 
@@ -108,14 +108,14 @@ public class Kredit {
                 System.out.println("Seimos finansiniai isipareigojimai (isiskolinimai):");
                 isiskolinimai = klaviatura.nextDouble();
                 System.out.println("Palukanos bus: " + isiskolinimai);
-                if (isiskolinimai > 5000 || isiskolinimai < 0) {
+                if (galimasIsiskolinimas(0, 5000)) {
                     throw new FileNotFoundException("Paskola jums nebus suteikiama del palukanu");
                 }
 
                 System.out.println("Iveskite vaiku skaiciu: ");
                 vaikukiekis = klaviatura.nextInt();
                 System.out.println("Vaiku yra: " + vaikukiekis);
-                if (vaikukiekis > 10 || vaikukiekis < 0) {
+                if (galimasVaikuKiekis(10)) {
                     throw new FileNotFoundException("Blogai ivedete vaiku skaiciu");
                 }
 
@@ -126,7 +126,7 @@ public class Kredit {
                 System.out.println("Vartotojo kredito paskola: ");
                 Paskola = klaviatura.nextDouble();
                 System.out.println("Jus norite pasiskolinti: " + Paskola);
-                if (isiskolinimai > 2600 || isiskolinimai < 300) {
+                if (galimasIsiskolinimas(300, 2600)) {
                     throw new FileNotFoundException("Paskola jums nebus suteikiama del paskolos limito");
                 }
 
@@ -143,9 +143,9 @@ public class Kredit {
                 
                 System.out.println("   ");
                 
-                if (Paskola >= 0.4 * Pajamos * (isiskolinimai - (vaikukiekis * vaikuislaidos))) {
+                if (arSuteiamaPaskola()) {
                     throw new FileNotFoundException("Paskola nesuteikiama!");
-                } else if (Paskola < 0.4 * Pajamos * (isiskolinimai - (vaikukiekis * vaikuislaidos))) {
+                } else{
                     System.out.println("Paskola suteikiama!");
                 }
                 
@@ -154,7 +154,7 @@ public class Kredit {
                 if (0.0013 * Paskola > 144.81) {
                     System.out.println("Kredito sutarties sudarymo mokestis bus: " + 0.0013 * Paskola);
                 }
-                if (0.0013 * Paskola <= 144.81) {
+                else{
                     System.out.println("Kredito sutarties sudarymo mokestis bus: " + 144.81);
                      System.out.println("");
                     R = palukanos / 1200;
@@ -167,7 +167,7 @@ public class Kredit {
                     System.out.printf("Seimos pajamos atskaicius mokescius:  %.2f", Pelnas);
                     System.out.println("   ");
                 }
-                if (Pelnas > 10000 || Pelnas < 0) {
+                if (galimasPelnas(0, 10000)) {
                     throw new FileNotFoundException("Paskola jums nebus suteikiama");
                 }
                 
@@ -184,4 +184,18 @@ public class Kredit {
                     System.out.println("   ");
                     System.out.println("Good Bye");
     }
+    
+    boolean galimasIsiskolinimas(int nuo, int iki){
+        return (isiskolinimai > iki || isiskolinimai < nuo);
+    }
+    boolean galimasVaikuKiekis(int kiekis){
+        return (vaikukiekis > kiekis || vaikukiekis < 0);
+    }
+    boolean galimasPelnas(int nuo, int iki){
+        return (Pelnas > iki || Pelnas < nuo);
+    }
+    boolean arSuteikiamaPaskola(){
+        return (Paskola >= 0.4 * Pajamos * (isiskolinimai - (vaikukiekis * vaikuislaidos)));
+    }
+    
 }
